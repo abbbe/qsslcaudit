@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y wget git time
 ADD . /qsslcaudit
 WORKDIR /qsslcaudit
 
-RUN tools/install-deps-safe-xenial.sh
+RUN tools/install-deps.sh safe ubuntu:xenial
 RUN tools/install.sh
 
 RUN apt-get install -y curl vim libxml-xpath-perl lsb-release
