@@ -2,8 +2,8 @@
 # Docker environment for QSSLCAUDIT testing
 # Uses binary packages of unsafe OpenSSL
 #
-# Prepare image: docker build -t qs-unsafe-xenial -f Dockerfile.qs-unsafe-xenial .
-# Run instance:  docker run --name qs-unsafe-xenial --rm -it qs-unsafe-xenial
+# Prepare image: docker build -t qs-unsafe-ubuntu:xenial -f Dockerfile.qs-unsafe-ubuntu:xenial .
+# Run instance:  docker run --rm -it qs-unsafe-ubuntu:xenial
 #
 FROM ubuntu:xenial
 

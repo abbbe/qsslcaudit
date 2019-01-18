@@ -5,23 +5,18 @@ os: linux
 services:
   - docker
 
-branches:
-  only:
-  - master
-
 matrix:
   include:
-  - env: DIST=xenial MODE=safe
-  - env: DIST=xenial MODE=unsafe
-  - env: DIST=bionic MODE=unsafe
+  - env: DIST=ubuntu:xenial MODE=safe
+  - env: DIST=ubuntu:xenial MODE=unsafe
+  - env: DIST=ubuntu:bionic MODE=unsafe
 
 before_install:
   - NAME=qs-${MODE}-${DIST}
   - docker build -f Dockerfile.${NAME} -t ${NAME} .
 
 install:
-  - docker run -d --name ${NAME} -e LC_ALL="en_US.UTF-8" -e LANG="en_US.UTF-8" ${NAME} tail -f /dev/null
-  - SH="docker exec -t ${NAME} bash -c"
+  - SH="docker run -t -e LC_ALL=en_US.UTF-8 -e LANG=en_US.UTF-8 ${NAME} bash -c"
 
 script:
   - $SH "tools/run-autotests.sh"

@@ -2,17 +2,17 @@
 # Docker environment for QSSLCAUDIT testing
 # Uses standard OpenSSL libraries
 #
-# Prepare image: docker build -t qs-safe-xenial -f Dockerfile.qs-safe-xenial .
-# Run instance:  docker run --name qs-safe-xenial --rm -it qs-safe-xenial
+# Prepare image: docker build -t qs-safe-ubuntu:bionic -f Dockerfile.qs-safe-ubuntu:bionic .
+# Run instance:  docker run --rm -it qs-safe-ubuntu:bionic
 #
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 RUN apt-get update && apt-get install -y wget git time
 
 ADD . /qsslcaudit
 WORKDIR /qsslcaudit
 
-RUN tools/install-deps.sh safe ubuntu:xenial
+RUN tools/install-deps.sh safe ubuntu:bionic
 RUN tools/install.sh
 
 RUN apt-get install -y curl vim libxml-xpath-perl lsb-release

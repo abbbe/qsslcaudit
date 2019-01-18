@@ -2,8 +2,8 @@
 # Docker environment for QSSLCAUDIT testing
 # Uses binary packages of unsafe OpenSSL
 #
-# Prepare image: docker build -t qs-unsafe-bionic -f Dockerfile.qs-unsafe-bionic .
-# Run instance:  docker run --name qs-unsafe-bionic --rm -it qs-unsafe-bionic
+# Prepare image: docker build -t qs-unsafe-ubuntu:bionic -f Dockerfile.qs-unsafe-ubuntu:bionic .
+# Run instance:  docker run --rm -it qs-unsafe-ubuntu:bionic
 #
 FROM ubuntu:bionic
 
