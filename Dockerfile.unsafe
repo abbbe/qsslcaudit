@@ -1,0 +1,5 @@
+ARG IMAGE
+FROM $IMAGE
+ARG IMAGE
+COPY tools/install-unsafe-openssl.sh /tmp
+RUN /tmp/install-unsafe-openssl.sh $IMAGE

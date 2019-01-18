@@ -1,0 +1,40 @@
+version: '3'
+services:
+  qs-unsafe-xenial: &qs-base
+    hostname: qs-unsafe-xenial
+    build:
+      context: .
+      dockerfile: Dockerfile.qs-unsafe-xenial
+    ports:
+     - "8443:8443"
+    volumes:
+     - .:/qsslcaudit
+
+  qs-unsafe-bionic:
+    <<: *qs-base
+    hostname: qs-unsafe-bionic
+    build:
+      context: .
+      dockerfile: Dockerfile.qs-unsafe-bionic
+
+  xenial: # 16.04
+    hostname: xenial
+    build:
+      context: .
+      dockerfile: Dockerfile.unsafe
+      args:
+        IMAGE: ubuntu:xenial
+    links:
+      - qs-unsafe-xenial
+    volumes:
+     - .:/qsslcaudit
+
+  bionic: # 18.04
+    hostname: bionic
+    build:
+      context: .
+      dockerfile: Dockerfile.unsafe
+      args:
+        IMAGE: ubuntu:bionic
+    volumes:
+     - .:/qsslcaudit
